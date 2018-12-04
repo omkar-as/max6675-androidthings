@@ -22,7 +22,9 @@ class Max6675 constructor(deviceName: String) {
 
         val buffer = ByteArray(2)
         this.device.read(buffer, buffer.size)
-        return (buffer[0].toInt() shl 8) or buffer[1].toInt()
+        val byte1 = (buffer[0].toInt() shl 8)
+        val byte2 = buffer[1].toInt()
+        return byte1 or byte2
     }
 
     @Throws(IOException::class)
