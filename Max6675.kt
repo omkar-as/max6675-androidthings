@@ -68,12 +68,12 @@ class Max6675 constructor(deviceName: String) {
         return data12MSBs.toDouble() * 0.25
     }
 
-    fun getMeanTempInCelcius(numReadings: Int = 1): Double {
+    fun getMeanTempInCelcius(numReadings: Int = 10): Double {
         var totalTemp = 0.0
         var i = 1
         while(i++ <= numReadings) {
             totalTemp += readTempInCelcius()
-            Thread.sleep(200)
+            Thread.sleep(1000)
         }
         return totalTemp / numReadings
     }
