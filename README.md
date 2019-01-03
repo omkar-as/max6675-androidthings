@@ -24,12 +24,16 @@ val SPI_DEVICE_NAME="SPI3.0"
 
 // Initialize and configure the device.
 val max6675 = Max6675(SPI_DEVICE_NAME)
-max6675.configureSpiDevice()
 
-// Read and print the temperature every second.
-while(true) {
+// Read and print the temperature 100 times, with 1s delay between reads.
+var index = 1
+while(index <= 100) {
     val result = max6675.readTempInCelcius()
     Log.i(TAG, "Result: $result")
     Thread.sleep(1000)
+    index += 1
 }
+
+// Close the device when you're done using it.
+max6675.closeSpiDevice()
 ```
